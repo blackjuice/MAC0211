@@ -40,3 +40,16 @@ matriz[4][4] = .
 matriz[4][5] = .
 matriz[4][6] = H
 matriz[4][7] = .
+
+
+
+
+
+
+5 8
+CCCC.H.H
+......H.
+DD.DD...      
+......H.
+CCCC.H.H
+
