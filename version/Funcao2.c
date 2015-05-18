@@ -88,10 +88,9 @@ void escreva_mapa_tela(char mapa_tela[5][8])
 
 int main()
 {
-    int linha,coluna;
+    int linha, coluna;
     char mapa_tela[5][8];
-    leiaMapa();
-
+    //leiaMapa();
 
     for(linha = 0; linha<5; linha++)
     {
@@ -109,6 +108,7 @@ int main()
         }
         printf("\n");
     }
+
     escreva_mapa_tela(mapa_tela);
 
 	return 0;
