@@ -5,26 +5,19 @@
 
 #define MAX_NOME 128
 #define EXIT_FAILURE_MALLOC -1
-/*
-typedef struct pixelGame PixelGame;
-struct pixelGame {
-	char	info;
-};
-*/
 
 typedef struct imagemGame ImagemGame;
 struct imagemGame {
-	int  linha;
-	int coluna;
+	int  	linha;
+	int 	coluna;
 	char 	info;
-  //PixelGame **pixel;  /* matriz coluna x linha de pixels com os níveis RGB     */
 };
 
 static void 	*mallocSafe (size_t nbytes);
 ImagemGame 		*mallocImagemGame(int linha, int coluna);
 ImagemGame 		* leia_mapa(char *nomeArquivo);
-
-
+void 			freeImagemGame(ImagemGame *mapa);
+void 			escreva_mapa_tela(ImagemGame *mapa);
 
 /*-------------------------------------------------------------*/ 
 /*  mallocSafe 
@@ -50,28 +43,13 @@ static void
    return ptr;
 }
 
-
 ImagemGame *
 mallocImagemGame(int linha, int coluna)
 {
   ImagemGame *mapa;
   mapa = mallocSafe (sizeof(ImagemGame));
-
-/*
-  int i;
-  image = mallocSafe (linha * sizeof(int *));
-  for (i = 0; i < linha; i++)
-      image[i] = mallocSafe (coluna * sizeof(int));
-  for (i = 0; i < coluna; i++)
-	P[i] = mallocSafe (linha*sizeof(PixelRGB));
-
-  for (i = 0; i < linha; i++)
-	for (j = 0; j < coluna; j++)
-		image -> visitado = FALSE;
-*/
   return mapa;
 }
-
 
 ImagemGame * leia_mapa(char *nomeArquivo)
 {
@@ -105,16 +83,24 @@ ImagemGame * leia_mapa(char *nomeArquivo)
 	    printf("\n");
 	}
 
-
-
-
-
-
 	fclose(fEntrada);
-
 	fprintf(stdout, "A imagem foi carregada e o "
 	          		"arquivo '%s' foi fechado.\n", nomeArquivo);
 	return (mapa);
+}
+
+void escreva_mapa_tela(ImagemGame *mapa)
+{
+    int linha, coluna;
+
+    printf("\n\n");
+    for(coluna = 0; coluna < mapa->coluna; coluna++) {
+    	for(linha = 0; linha < mapa->linha; linha++) {
+
+    		printf("-");
+    	}
+        printf("\n");
+    }
 }
 
 void
@@ -137,6 +123,8 @@ int main()
 	scanf("%s", nome);
 	/* 2. carregue o mapa do arquivo*/
 	mapa = leia_mapa (nome);
+	escreva_mapa_tela(mapa);
 
+	freeImagemGame(mapa);
 	return 0;
 }
