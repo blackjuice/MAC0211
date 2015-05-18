@@ -99,12 +99,10 @@ ImagemGame * leia_mapa(char *nomeArquivo)
 
 	for(linha = 0; linha < mapa->linha; linha++) {
 	    for(coluna = 0; coluna < mapa->coluna; coluna++) {
-	        //matriz[linha][coluna] = fgetc(f1);
-	        //fscanf(fEntrada, "%c", &c);
-	        fscanf(fEntrada, "%c", &mapa->info);
-	        //scanf(" %c", mapa[linha][coluna]);
+	        fscanf(fEntrada, " %c", &mapa->info);
 	        printf("%c", mapa->info);
 	    }
+	    printf("\n");
 	}
 
 
