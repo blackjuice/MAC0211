@@ -1,6 +1,0 @@
-5 8
-CCCC.H.H
-..... H.
-DD.DD...
-..... H.
-CCCC.H.H
