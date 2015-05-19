@@ -18,8 +18,8 @@ ImagemGame 		*mallocImagemGame(int linha, int coluna);
 ImagemGame 		* leia_mapa(char *nomeArquivo);
 void 			freeImagemGame(ImagemGame *mapa);
 void 			escreva_mapa_tela(ImagemGame *mapa);
-int             posiciona_barco(ImagemGame *mapa, int linAtual, int colAtual);
-int             rema_barco(imagemGame *mapa, int linAtual, int colAtual);
+int             posiciona_barco(ImagemGame *mapa);
+int             rema_barco(ImagemGame *mapa, int linAtual, int colAtual);
 
 /*-------------------------------------------------------------*/
 /*  mallocSafe
@@ -139,7 +139,7 @@ retorna:
 5 - se o barco colidir com alguma embarcacao, perdendo o jogo
 
 */
-int * rema_barco (ImagemGame *mapa, int linAtual, int colAtual)
+int rema_barco (ImagemGame *mapa, int linAtual, int colAtual)
 {
     char escolha;
 
@@ -219,12 +219,36 @@ int * rema_barco (ImagemGame *mapa, int linAtual, int colAtual)
     }
 }
 
+int sorteia(int k)
+{
+    return (int)(1 + (rand() / (RAND_MAX + 1.0)) * k);
+}
+
+int coordenadas_tiro(int *linTiro, int nLinhas, int nColunas)
+{
+    *linTiro = sorteia(nLinhas);
+    return sorteia(nColunas);
+}
+
+void identifica_alvo_atingido()
+{
+    
+}
+
+void dispara_tiros(int nLinhas, int nColunas)
+{
+    int *linhaTiro,colunaTiro;
+    colunaTiro = coordenadas_tiro(linhaTiro,nLinhas,nColunas);
+    
+    
+}
+
 //int main(int argc, char *argv[])
 int main()
 {
 	ImagemGame *mapa = NULL;
 	char nome[MAX_NOME];
-	int linAtual, colAtual;
+	int linAtual, colAtual,rodada;
 
 	/* 1. pegue o nome do arquivo com o mapa da entrada padrao */
 	printf("Digite o caminho do arquivo mapa a ser utilizado: ");
@@ -238,7 +262,12 @@ int main()
 
 	while(linAtual != 4 /* ultima linha do mapa, no caso do exemplo mapa1 */)
     {
-
+        rodada = rema_barco(mapa,linAtual,colAtual);
+        if(rodada == 5)
+        {
+            printf("\n\nQue pena! Seu barco colidiu com uma embarcacao e afundou!\n\n");
+            return 0;
+        }
     }
 
 	freeImagemGame(mapa);
