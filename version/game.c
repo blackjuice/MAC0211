@@ -411,7 +411,7 @@ int identifica_alvo_atingido (char **mapa, int linhaTiro, int colunaTiro, int li
     return SAFE_MOVE;
 }
 
-void afunda_destroyer(char **mapa, int linha, int coluna, int rowMax, int columnMax, int contador)
+void afunda_destroyer(char **mapa, int linha, int coluna, int rowMax, int columnMax, int *contador)
 {
     mapa[linha][coluna] = '*';
 
@@ -494,6 +494,182 @@ void afunda_destroyer(char **mapa, int linha, int coluna, int rowMax, int column
                 contador++;
                 mapa[linha + 1][coluna + 1] = '*';
                 afunda_destroyer(mapa, linha + 1, coluna + 1, rowMax, columnMax, contador);
+            }
+        }
+    }
+}
+
+void afunda_cruzador(char **mapa, int linha, int coluna, int rowMax, int columnMax, int *contador)
+{
+    mapa[linha][coluna] = '*';
+
+    while(contador < 4)
+    {
+        if(linha != 0 && coluna != 0)
+        {
+            if(mapa[linha-1][coluna-1] == 'C')
+            {
+                contador++;
+                mapa[linha-1][coluna-1] = '*';
+                afunda_cruzador(mapa,linha-1,coluna-1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(coluna != 0)
+        {
+            if(mapa[linha][coluna-1] == 'C')
+            {
+                contador++;
+                mapa[linha][coluna-1] = '*';
+                afunda_cruzador(mapa,linha,coluna-1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != rowMax && coluna != 0)
+        {
+            if(mapa[linha+1][coluna-1] == 'C')
+            {
+                contador++;
+                mapa[linha+1][coluna-1] = '*';
+                afunda_cruzador(mapa,linha+1,coluna-1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != 0)
+        {
+            if(mapa[linha-1][coluna] == 'C')
+            {
+                contador++;
+                mapa[linha-1][coluna] = '*';
+                afunda_cruzador(mapa,linha-1,coluna,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != rowMax)
+        {
+            if(mapa[linha+1][coluna] == 'C')
+            {
+                contador++;
+                mapa[linha+1][coluna] = '*';
+                afunda_cruzador(mapa,linha+1,coluna,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != 0 && coluna != columnMax)
+        {
+            if(mapa[linha-1][coluna+1] == 'C')
+            {
+                contador++;
+                mapa[linha-1][coluna+1] = '*';
+                afunda_cruzador(mapa,linha-1,coluna+1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(coluna != columnMax)
+        {
+            if(mapa[linha][coluna+1] == 'C')
+            {
+                contador++;
+                mapa[linha][coluna+1] = '*';
+                afunda_cruzador(mapa,linha,coluna+1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != rowMax && coluna != columnMax)
+        {
+            if(mapa[linha+1][coluna+1] == 'C')
+            {
+                contador++;
+                mapa[linha+1][coluna+1] = '*';
+                afunda_cruzador(mapa,linha+1,coluna+1,rowMax,columnMax,contador);
+            }
+        }
+    }
+}
+
+void afunda_porta_aviao(char **mapa, int linha, int coluna, int rowMax, int columnMax, int *contador)
+{
+    mapa[linha][coluna] = '*';
+
+    while(contador < 5)
+    {
+        if(linha != 0 && coluna != 0)
+        {
+            if(mapa[linha-1][coluna-1] == 'P')
+            {
+                contador++;
+                mapa[linha-1][coluna-1] = '*';
+                afunda_porta_aviao(mapa,linha-1,coluna-1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(coluna != 0)
+        {
+            if(mapa[linha][coluna-1] == 'P')
+            {
+                contador++;
+                mapa[linha][coluna-1] = '*';
+                afunda_porta_aviao(mapa,linha,coluna-1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != rowMax && coluna != 0)
+        {
+            if(mapa[linha+1][coluna-1] == 'P')
+            {
+                contador++;
+                mapa[linha+1][coluna-1] = '*';
+                afunda_porta_aviao(mapa,linha+1,coluna-1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != 0)
+        {
+            if(mapa[linha-1][coluna] == 'P')
+            {
+                contador++;
+                mapa[linha-1][coluna] = '*';
+                afunda_porta_aviao(mapa,linha-1,coluna,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != rowMax)
+        {
+            if(mapa[linha+1][coluna] == 'P')
+            {
+                contador++;
+                mapa[linha+1][coluna] = '*';
+                afunda_porta_aviao(mapa,linha+1,coluna,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != 0 && coluna != columnMax)
+        {
+            if(mapa[linha-1][coluna+1] == 'P')
+            {
+                contador++;
+                mapa[linha-1][coluna+1] = '*';
+                afunda_porta_aviao(mapa,linha-1,coluna+1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(coluna != columnMax)
+        {
+            if(mapa[linha][coluna+1] == 'P')
+            {
+                contador++;
+                mapa[linha][coluna+1] = '*';
+                afunda_porta_aviao(mapa,linha,coluna+1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != rowMax && coluna != columnMax)
+        {
+            if(mapa[linha+1][coluna+1] == 'P')
+            {
+                contador++;
+                mapa[linha+1][coluna+1] = '*';
+                afunda_porta_aviao(mapa,linha+1,coluna+1,rowMax,columnMax,contador);
             }
         }
     }
