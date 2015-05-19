@@ -328,7 +328,7 @@ void dispara_tiros(ImagemGame *mapa, int nLinhas, int nColunas)
     while(contador < 3)
     {
         mapa = identifica_alvo_atingido(mapa);
-
+        contador++;
     }
 }
 
@@ -337,7 +337,10 @@ int main()
 {
 	ImagemGame *mapa = NULL;
 	char nome[MAX_NOME];
-	int linAtual, colAtual,rodada;
+	int linAtual, colAtual,rodada,nLinhas,nColunas;
+	
+	// nLinhas = numero de linhas do mapa (no caso do exemplo mapa1.txt, nLinhas = 5
+    // nColunas = numero de colunas do mapa (no caso do exemplo mapa1.txt, nColunas = 8
 
 	/* 1. pegue o nome do arquivo com o mapa da entrada padrao */
 	printf("Digite o caminho do arquivo mapa a ser utilizado: ");
@@ -349,7 +352,7 @@ int main()
 	linAtual = 0;
 	colAtual = posiciona_barco(mapa);
 
-	while(linAtual != 4 /* ultima linha do mapa, no caso do exemplo mapa1 */)
+	while(linAtual != nLinhas-1 /* ultima linha do mapa, no caso do exemplo mapa1, nLinhas = 5 (nLinhas - 1 = 4) */)
     {
         rodada = rema_barco(mapa,linAtual,colAtual);
         if(rodada == 5)
@@ -373,13 +376,17 @@ int main()
         {
             colAtual++;
         }
-
+        
+        dispara_tiros(mapa,nLinhas,nColunas);
+        
         if(mapa[linAtual][colAtual] == '!')
         {
             printf("\n\nQue pena! Seu barco foi atingido por um tiro e afundou!\n\n");
             return 0;
         }
     }
+    
+    printf("\n\nParabens, voce ganhou o jogo!\n\n");
 
 	freeImagemGame(mapa);
 	return 0;
