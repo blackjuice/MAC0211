@@ -674,3 +674,91 @@ void afunda_porta_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
         }
     }
 }
+
+void afunda_hidro_aviao(char **mapa, int linha, int coluna, int rowMax, int columnMax, int *contador)
+{
+    mapa[linha][coluna] = '*';
+
+    while(contador < 3)
+    {
+        if(linha != 0 && coluna != 0)
+        {
+            if(mapa[linha-1][coluna-1] == 'H')
+            {
+                contador++;
+                mapa[linha-1][coluna-1] = '*';
+                afunda_hidro_aviao(mapa,linha-1,coluna-1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(coluna != 0)
+        {
+            if(mapa[linha][coluna-1] == 'H')
+            {
+                contador++;
+                mapa[linha][coluna-1] = '*';
+                afunda_hidro_aviao(mapa,linha,coluna-1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != rowMax && coluna != 0)
+        {
+            if(mapa[linha+1][coluna-1] == 'H')
+            {
+                contador++;
+                mapa[linha+1][coluna-1] = '*';
+                afunda_hidro_aviao(mapa,linha+1,coluna-1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != 0)
+        {
+            if(mapa[linha-1][coluna] == 'H')
+            {
+                contador++;
+                mapa[linha-1][coluna] = '*';
+                afunda_hidro_aviao(mapa,linha-1,coluna,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != rowMax)
+        {
+            if(mapa[linha+1][coluna] == 'H')
+            {
+                contador++;
+                mapa[linha+1][coluna] = '*';
+                afunda_hidro_aviao(mapa,linha+1,coluna,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != 0 && coluna != columnMax)
+        {
+            if(mapa[linha-1][coluna+1] == 'H')
+            {
+                contador++;
+                mapa[linha-1][coluna+1] = '*';
+                afunda_hidro_aviao(mapa,linha-1,coluna+1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(coluna != columnMax)
+        {
+            if(mapa[linha][coluna+1] == 'H')
+            {
+                contador++;
+                mapa[linha][coluna+1] = '*';
+                afunda_hidro_aviao(mapa,linha,coluna+1,rowMax,columnMax,contador);
+            }
+        }
+
+        if(linha != rowMax && coluna != columnMax)
+        {
+            if(mapa[linha+1][coluna+1] == 'H')
+            {
+                contador++;
+                mapa[linha+1][coluna+1] = '*';
+                afunda_hidro_aviao(mapa,linha+1,coluna+1,rowMax,columnMax,contador);
+            }
+        }
+    }
+}
