@@ -7,34 +7,34 @@
 #define EXIT_FAILURE_MALLOC -1
 
 /**************************************
- * 			Declaracao das funcoes
+ *      Declaracao das funcoes
  **************************************/
 
-char ** leia_mapa					(char *nomeArquivo, int *linha, int *coluna);
-char ** mallocImagemGame			(int *linha, int *coluna);
-void 	escreva_mapa_tela			(char **mapa, int linha, int coluna);
-void 	escreva_mapa_arquivo 		(char *nomeArquivo, char **mapa, int linha, int coluna);
-void	posiciona_barco				(char **mapa, int *coluna);
-int 	rema_barco 					(char **mapa, int *linAtual, int *colAtual, int rowMax, int columnMax);
-void 	freeImagemGame				(char **mapa, int linha);
+char ** leia_mapa                   (char *nomeArquivo, int *linha, int *coluna);
+char ** mallocImagemGame            (int *linha, int *coluna);
+void    escreva_mapa_tela           (char **mapa, int linha, int coluna);
+void    escreva_mapa_arquivo        (char *nomeArquivo, char **mapa, int linha, int coluna);
+void    posiciona_barco             (char **mapa, int *coluna);
+int     rema_barco                  (char **mapa, int *linAtual, int *colAtual, int rowMax, int columnMax);
+void    freeImagemGame              (char **mapa, int linha);
 
-void identifica_alvo_atingido (char **mapa, int *linhaTiro, int *colunaTiro, int linha, int coluna);
 void dispara_tiros (char **mapa, int linha, int coluna);
 void coordenadas_tiro (int *linhaTiro, int *colunaTiro ,int linha, int coluna);
 int sorteia (int k);
+//void identifica_alvo_atingido (char **mapa, int *linhaTiro, int *colunaTiro, int linha, int coluna);
 
 
 
 
 /**************************************
- * 			Inicio da main()
+ *      Inicio da main()
  **************************************/
 int main()
 {
-	int 		linha = 0, coluna = 0;
-	char 		**mapa;
+	int        linha = 0, coluna = 0;
+	char       **mapa;
 
-	int 		linBarco = 0, colBarco = 0;
+	int        linBarco = 0, colBarco = 0;
 	/*
 	char 		saida_arquivo[MAX_NOME];
 	char 		input[MAX_NOME];
@@ -81,7 +81,7 @@ int main()
 
 
 /**************************************
- * 			Inicio das funcoes
+ *      Inicio das funcoes
  **************************************/
 
 /* alocacao da matriz que contera o mapa */
@@ -102,10 +102,10 @@ mallocImagemGame(int *linha, int *coluna)
 char **
 leia_mapa(char *nomeArquivo, int *linha, int *coluna)
 {
-	FILE 			*fEntrada;
-	int 			i, j;
-	char 			c;
-	char 			**mapa;
+	FILE           *fEntrada;
+	int            i, j;
+	char           c;
+	char           **mapa;
 
 	fEntrada = fopen(nomeArquivo, "r");
 	if (fEntrada == NULL) 
@@ -136,7 +136,7 @@ leia_mapa(char *nomeArquivo, int *linha, int *coluna)
 /* impressao da tela para o usuario */
 void escreva_mapa_tela (char **mapa, int linha, int coluna)
 {
-    int 		i, j;
+    int         i, j;
     printf("\n  ");
     for(j = 0; j < coluna ; j++)
     	printf(" %d ", j);
@@ -158,8 +158,8 @@ void escreva_mapa_tela (char **mapa, int linha, int coluna)
 /* criacao de arquivo que contera os resultados do mapa */
 void escreva_mapa_arquivo (char *nome, char **mapa, int linha, int coluna)
 {
-	FILE 		*fSaida;
-	int 		i, j;
+	FILE       *fSaida;
+	int        i, j;
 
 	/* criaremos um arquivo (w = write) */
 	//fSaida = fopen(nome, "w");
@@ -188,7 +188,7 @@ void escreva_mapa_arquivo (char *nome, char **mapa, int linha, int coluna)
 void
 freeImagemGame(char **mapa, int linha)
 {
-	int 	i;
+	int    i;
 	for (i = 0; i < linha; i++)
 		free (mapa[i]);
 	free (mapa);
@@ -219,35 +219,39 @@ int
 rema_barco (char **mapa, int *linAtual, int *colAtual, int rowMax, int columnMax) {
 	char escolha;
 
-    printf( "-----------------------\n"
-    		"Direcao do barco:\n"
-    		" 	(c) para cima\n"
-    		"	(b) para baixo\n"
-			"	(d) para direita\n"
-    		"	(e) para esquerda\n"
-    		"-----------------------\n");
+    printf( "  _______________________ \n"
+            " |                       |\n"
+    		" |   Direcao do barco:   |\n"
+            " |_______________________|\n"
+            " |                       |\n"
+    		" |    (c) para cima      |\n"
+    		" |    (b) para baixo     |\n"
+			" |    (d) para direita   |\n"
+    		" |    (e) para esquerda  |\n"
+    		" |_______________________|\n\n"
+            "      Direcao:");
+
     scanf(" %c", &escolha);
 
     if(escolha == 'c') {
-    	// estamos no topo do mapa. Subir sera invalido.
+        // estamos no topo do mapa. Subir sera invalido.
         if((*linAtual) == 0)
             printf("\nERRO! Siga para uma direção válida!\n");
 
         else if(mapa[(*linAtual) - 1][(*colAtual)] == 'S' || mapa[(*linAtual) - 1][(*colAtual)] == 'D' || 
-        		mapa[(*linAtual) - 1][(*colAtual)] == 'C' || mapa[(*linAtual) - 1][(*colAtual)] == 'P' ||
-           		mapa[(*linAtual) - 1][(*colAtual)] == 'H')
-        	{ 
-        		mapa[(*linAtual)][(*colAtual)] 	= 'T';
-        		(*linAtual)--;
-
-        		return 2;
-        	}
-	    else {
-	            mapa[(*linAtual)][(*colAtual)] 	= 'T';
-	            mapa[(*linAtual) - 1][(*colAtual)] = 'B';
-	            (*linAtual)--;
-	            return 1;
-	    }
+                mapa[(*linAtual) - 1][(*colAtual)] == 'C' || mapa[(*linAtual) - 1][(*colAtual)] == 'P' ||
+                mapa[(*linAtual) - 1][(*colAtual)] == 'H')
+            { 
+                mapa[(*linAtual)][(*colAtual)] 	= 'T';
+                (*linAtual)--;
+                return 2;
+            }
+        else {
+                mapa[(*linAtual)][(*colAtual)] 	= 'T';
+                mapa[(*linAtual) - 1][(*colAtual)] = 'B';
+                (*linAtual)--;
+                return 1;
+        }
     }
 
     if(escolha == 'b') {
@@ -256,61 +260,61 @@ rema_barco (char **mapa, int *linAtual, int *colAtual, int rowMax, int columnMax
             printf("\nERRO! Siga para uma direção válida!\n");
 
         else if(mapa[(*linAtual) + 1][(*colAtual)] == 'S' || mapa[(*linAtual) + 1][(*colAtual)] == 'D' || 
-        		mapa[(*linAtual) + 1][(*colAtual)] == 'C' || mapa[(*linAtual) + 1][(*colAtual)] == 'P' || 
-           		mapa[(*linAtual) + 1][(*colAtual)] == 'H')
-        	{
-        		mapa[(*linAtual)][(*colAtual)] 	= 'T';
-        		(*linAtual)++;
-        		return 2;
-        	}
-		else {
-			    mapa[(*linAtual)][(*colAtual)] 	= 'T';
-			    mapa[(*linAtual) + 1][(*colAtual)] = 'B';
-			    (*linAtual)++;
-			    return 1;
-		}
+                mapa[(*linAtual) + 1][(*colAtual)] == 'C' || mapa[(*linAtual) + 1][(*colAtual)] == 'P' || 
+                mapa[(*linAtual) + 1][(*colAtual)] == 'H')
+            {
+                mapa[(*linAtual)][(*colAtual)] 	= 'T';
+                (*linAtual)++;
+                return 2;
+            }
+        else {
+                mapa[(*linAtual)][(*colAtual)] 	= 'T';
+                mapa[(*linAtual) + 1][(*colAtual)] = 'B';
+                (*linAtual)++;
+                return 1;
+        }
     }
 
     if(escolha == 'e') {
-    	// estamos na borda esquerda. Ir para esquerda sera invalido
+        // estamos na borda esquerda. Ir para esquerda sera invalido
         if((*colAtual) == 0)
             printf("\nERRO! Siga para uma direção válida!\n");
 
         else if(mapa[(*linAtual)][(*colAtual) - 1] == 'S' || mapa[(*linAtual)][(*colAtual) - 1] == 'D' || 
-        		mapa[(*linAtual)][(*colAtual) - 1] == 'C' || mapa[(*linAtual)][(*colAtual) - 1] == 'P' ||
-				mapa[(*linAtual)][(*colAtual) - 1] == 'H')
-        	{
-        		mapa[(*linAtual)][(*colAtual)] 	= 'T';
-        		(*colAtual)--;
-        		return 2;
-        	}
-	    else {
-	            mapa[(*linAtual)][(*colAtual)] = 'T';
-	            mapa[(*linAtual)][(*colAtual) - 1] = 'B';
-	            (*colAtual)--;
-	            return 1;
-	    }
+                mapa[(*linAtual)][(*colAtual) - 1] == 'C' || mapa[(*linAtual)][(*colAtual) - 1] == 'P' ||
+                mapa[(*linAtual)][(*colAtual) - 1] == 'H')
+            {
+                mapa[(*linAtual)][(*colAtual)] 	= 'T';
+                (*colAtual)--;
+                return 2;
+            }
+        else {
+                mapa[(*linAtual)][(*colAtual)] = 'T';
+                mapa[(*linAtual)][(*colAtual) - 1] = 'B';
+                (*colAtual)--;
+                return 1;
+        }
     }
 
     if(escolha == 'd') {
-    	// estamos na borda direita. Ir para direita sera invalido
+        // estamos na borda direita. Ir para direita sera invalido
         if((*colAtual) == columnMax)
             printf("\nERRO! Siga para uma direção válida!\n");
 
         else if(mapa[(*linAtual)][(*colAtual) + 1] == 'S' || mapa[(*linAtual)][(*colAtual) + 1] == 'D' ||
-        		mapa[(*linAtual)][(*colAtual) + 1] == 'C' || mapa[(*linAtual)][(*colAtual) + 1] == 'P' ||
-           		mapa[(*linAtual)][(*colAtual) + 1] == 'H')
-        	{
-        		mapa[(*linAtual)][(*colAtual)] 	= 'T';
-        		(*colAtual)++;
-        		return 2;
-        	}
-		else {
-	            mapa[(*linAtual)][(*colAtual)] = 'T';
-	            mapa[(*linAtual)][(*colAtual) + 1] = 'B';
-	            (*colAtual)++;
-	            return 1;
-	    }
+                mapa[(*linAtual)][(*colAtual) + 1] == 'C' || mapa[(*linAtual)][(*colAtual) + 1] == 'P' ||
+                mapa[(*linAtual)][(*colAtual) + 1] == 'H')
+            {
+                mapa[(*linAtual)][(*colAtual)] 	= 'T';
+                (*colAtual)++;
+                return 2;
+            }
+        else {
+                mapa[(*linAtual)][(*colAtual)] = 'T';
+                mapa[(*linAtual)][(*colAtual) + 1] = 'B';
+                (*colAtual)++;
+                return 1;
+        }
     }
     return 0;
 }
@@ -326,67 +330,69 @@ void coordenadas_tiro (int *linhaTiro, int *colunaTiro ,int linha, int coluna) {
 
 void dispara_tiros (char **mapa, int linha, int coluna)
 {
-	int 	contador;
-	int 	linhaTiro, colunaTiro;
+    int    contador;
+    int    linhaTiro, colunaTiro;
 
-	for (contador = 0; contador < 3; contador++) {
-		coordenadas_tiro(&linhaTiro, &colunaTiro, linha, coluna);
-		printf("\nUm tiro atingiu a posição [%d][%d]!", linhaTiro, colunaTiro);
+    for (contador = 0; contador < 3; contador++) {
+        coordenadas_tiro(&linhaTiro, &colunaTiro, linha, coluna);
+        printf("\nUm tiro atingiu a posição [%d][%d]!", linhaTiro, colunaTiro);
 
-        identifica_alvo_atingido(mapa, &linhaTiro, &colunaTiro, linha, coluna);
+        //identifica_alvo_atingido(mapa, &linhaTiro, &colunaTiro, linha, coluna);
         escreva_mapa_tela (mapa, linha, coluna);
     }
 }
 
+/*
+
 void identifica_alvo_atingido (char **mapa, int *linhaTiro, int *colunaTiro, int linha, int coluna) {
-	
-	if(mapa[linhaTiro][colunaTiro] == '.')
-	{
-	    printf("\nSorte que so tinha agua no local!\n");
-	    mapa[linhaTiro][colunaTiro] = '=';
-	}
-	if(mapa[linhaTiro][colunaTiro] == 'B')
-	{
-	    printf("\nQue pena! Seu barco foi atingido por um tiro e afundou!\n");
-	    mapa[linhaTiro][colunaTiro] = '!';
-	}
-	if(mapa[linhaTiro][colunaTiro] == 'T')
-	{
-	    printf("\nUm tiro atingiu uma das posicoes passadas por seu barco! Sorte que seu barco nao estava la nessa rodada!\n");
-	    mapa[linhaTiro][colunaTiro] = '+';
-	}
-	if(mapa[linhaTiro][colunaTiro] == 'S' || mapa[linhaTiro][colunaTiro] == 'D' || mapa[linhaTiro][colunaTiro] == 'C' ||
-	   mapa[linhaTiro][colunaTiro] == 'P' || mapa[linhaTiro][colunaTiro] == 'H')
-	{
-	    if(mapa[linhaTiro][colunaTiro] == 'S')
-	    {
-	        printf("\nUm tiro atingiu um submarino! O mesmo foi totalmente destruido!\n");
-	        mapa[linhaTiro][colunaTiro] = '*';
-	    }
 
-	    if(mapa[linhaTiro][colunaTiro] == 'D')
-	    {
-	        printf("\nUm tiro atingiu um destroyer! O mesmo foi totalmente destruido!\n");
-	        mapa = afunda_destroyer(mapa,linhaTiro,colunaTiro);
-	    }
+    if(mapa[linhaTiro][colunaTiro] == '.')
+    {
+        printf("\nSorte que so tinha agua no local!\n");
+        mapa[linhaTiro][colunaTiro] = '=';
+    }
+    if(mapa[linhaTiro][colunaTiro] == 'B')
+    {
+        printf("\nQue pena! Seu barco foi atingido por um tiro e afundou!\n");
+        mapa[linhaTiro][colunaTiro] = '!';
+    }
+    if(mapa[linhaTiro][colunaTiro] == 'T')
+    {
+        printf("\nUm tiro atingiu uma das posicoes passadas por seu barco! Sorte que seu barco nao estava la nessa rodada!\n");
+        mapa[linhaTiro][colunaTiro] = '+';
+    }
+    if(mapa[linhaTiro][colunaTiro] == 'S' || mapa[linhaTiro][colunaTiro] == 'D' || mapa[linhaTiro][colunaTiro] == 'C' ||
+       mapa[linhaTiro][colunaTiro] == 'P' || mapa[linhaTiro][colunaTiro] == 'H')
+    {
+        if(mapa[linhaTiro][colunaTiro] == 'S')
+        {
+            printf("\nUm tiro atingiu um submarino! O mesmo foi totalmente destruido!\n");
+            mapa[linhaTiro][colunaTiro] = '*';
+        }
 
-	    if(mapa[linhaTiro][colunaTiro] == 'C')
-	    {
-	        printf("\nUm tiro atingiu um cruzador! O mesmo foi totalmente destruido!\n");
-	        mapa = afunda_cruzador(mapa,linhaTiro,colunaTiro);
-	    }
+        if(mapa[linhaTiro][colunaTiro] == 'D')
+        {
+            printf("\nUm tiro atingiu um destroyer! O mesmo foi totalmente destruido!\n");
+            mapa = afunda_destroyer(mapa,linhaTiro,colunaTiro);
+        }
 
-	    if(mapa[linhaTiro][colunaTiro] == 'P')
-	    {
-	        printf("\nUm tiro atingiu um porta-aviao! O mesmo foi totalmente destruido!\n");
-	        mapa = afunda_porta_aviao(mapa,linhaTiro,colunaTiro);
-	    }
+        if(mapa[linhaTiro][colunaTiro] == 'C')
+        {
+            printf("\nUm tiro atingiu um cruzador! O mesmo foi totalmente destruido!\n");
+            mapa = afunda_cruzador(mapa,linhaTiro,colunaTiro);
+        }
 
-	    if(mapa[linhaTiro][colunaTiro] == 'H')
-	    {
-	        printf("\nUm tiro atingiu um hidro-aviao! O mesmo foi totalmente destruido!\n");
-	        mapa = afunda_hidro_aviao(mapa,linhaTiro,colunaTiro);
-	    }
-	}
+        if(mapa[linhaTiro][colunaTiro] == 'P')
+        {
+            printf("\nUm tiro atingiu um porta-aviao! O mesmo foi totalmente destruido!\n");
+            mapa = afunda_porta_aviao(mapa,linhaTiro,colunaTiro);
+        }
 
+        if(mapa[linhaTiro][colunaTiro] == 'H')
+        {
+            printf("\nUm tiro atingiu um hidro-aviao! O mesmo foi totalmente destruido!\n");
+            mapa = afunda_hidro_aviao(mapa,linhaTiro,colunaTiro);
+        }
+    }
 }
+*/
