@@ -194,7 +194,7 @@ int rema_barco (ImagemGame *mapa, int linAtual, int colAtual)
             return 5;
         else
         {
-            mapa[linAtual][colAtual-1] = 'T';
+            mapa[linAtual][colAtual] = 'T';
             mapa[linAtual][colAtual-1] = 'B';
             return 3;
         }
@@ -212,7 +212,7 @@ int rema_barco (ImagemGame *mapa, int linAtual, int colAtual)
             return 5;
         else
         {
-            mapa[linAtual][colAtual+1] = 'T';
+            mapa[linAtual][colAtual] = 'T';
             mapa[linAtual][colAtual+1] = 'B';
             return 4;
         }
@@ -230,17 +230,106 @@ int coordenadas_tiro(int *linTiro, int nLinhas, int nColunas)
     return sorteia(nColunas);
 }
 
-void identifica_alvo_atingido()
+ImagemGame * afunda_destroyer(ImagemGame *mapa, int linha, int coluna)
 {
-    
+    /*
+    O tiro atingiu mapa[linha][coluna]
+    transformar mapa[linha][coluna] em '*', detectar os outros componentes do destroyer e transforma-los em '*' tambem.
+    */
 }
 
-void dispara_tiros(int nLinhas, int nColunas)
+ImagemGame * afunda_cruzador(ImagemGame *mapa, int linha, int coluna)
+{
+    /*
+    O tiro atingiu mapa[linha][coluna]
+    transformar mapa[linha][coluna] em '*', detectar os outros componentes do cruzador e transforma-los em '*' tambem.
+    */
+}
+
+ImagemGame * afunda_porta_aviao(ImagemGame *mapa, int linha, int coluna)
+{
+    /*
+    O tiro atingiu mapa[linha][coluna]
+    transformar mapa[linha][coluna] em '*', detectar os outros componentes do porta-aviao e transforma-los em '*' tambem.
+    */
+}
+
+ImagemGame * afunda_hidro_aviao(ImagemGame *mapa, int linha, int coluna)
+{
+    /*
+    O tiro atingiu mapa[linha][coluna]
+    transformar mapa[linha][coluna] em '*', detectar os outros componentes do hidro-aviao e transforma-los em '*' tambem.
+    */
+}
+
+ImagemGame * identifica_alvo_atingido(ImagemGame *mapa)
 {
     int *linhaTiro,colunaTiro;
     colunaTiro = coordenadas_tiro(linhaTiro,nLinhas,nColunas);
-    
-    
+
+    printf("\nUm tiro atingiu o pixel [%d][%d]!",linhaTiro,colunaTiro);
+
+    if(mapa[linhaTiro][colunaTiro] == '.')
+    {
+        printf("\nSorte que so tinha agua no local!\n");
+        mapa[linhaTiro][colunaTiro] = '=';
+    }
+    if(mapa[linhaTiro][colunaTiro] == 'B')
+    {
+        printf("\nQue pena! Seu barco foi atingido por um tiro e afundou!\n");
+        mapa[linhaTiro][colunaTiro] = '!';
+    }
+    if(mapa[linhaTiro][colunaTiro] == 'T')
+    {
+        printf("\nUm tiro atingiu uma das posicoes passadas por seu barco! Sorte que seu barco nao estava la nessa rodada!\n");
+        mapa[linhaTiro][colunaTiro] = '+';
+    }
+    if(mapa[linhaTiro][colunaTiro] == 'S' || mapa[linhaTiro][colunaTiro] == 'D' || mapa[linhaTiro][colunaTiro] == 'C' ||
+       mapa[linhaTiro][colunaTiro] == 'P' || mapa[linhaTiro][colunaTiro] == 'H')
+    {
+        if(mapa[linhaTiro][colunaTiro] == 'S')
+        {
+            printf("\nUm tiro atingiu um submarino! O mesmo foi totalmente destruido!\n");
+            mapa[linhaTiro][colunaTiro] = '*';
+        }
+
+        if(mapa[linhaTiro][colunaTiro] == 'D')
+        {
+            printf("\nUm tiro atingiu um destroyer! O mesmo foi totalmente destruido!\n");
+            mapa = afunda_destroyer(mapa,linhaTiro,colunaTiro);
+        }
+
+        if(mapa[linhaTiro][colunaTiro] == 'C')
+        {
+            printf("\nUm tiro atingiu um cruzador! O mesmo foi totalmente destruido!\n");
+            mapa = afunda_cruzador(mapa,linhaTiro,colunaTiro);
+        }
+
+        if(mapa[linhaTiro][colunaTiro] == 'P')
+        {
+            printf("\nUm tiro atingiu um porta-aviao! O mesmo foi totalmente destruido!\n");
+            mapa = afunda_porta_aviao(mapa,linhaTiro,colunaTiro);
+        }
+
+        if(mapa[linhaTiro][colunaTiro] == 'H')
+        {
+            printf("\nUm tiro atingiu um hidro-aviao! O mesmo foi totalmente destruido!\n");
+            mapa = afunda_hidro_aviao(mapa,linhaTiro,colunaTiro);
+        }
+    }
+}
+
+// no caso do exemplo mapa1.txt, nLinhas = 5 e nColunas = 8
+void dispara_tiros(ImagemGame *mapa, int nLinhas, int nColunas)
+{
+    int contador;
+    contador = 0;
+
+    while(contador < 3)
+    {
+        mapa = identifica_alvo_atingido(mapa);
+
+    }
 }
 
 //int main(int argc, char *argv[])
@@ -268,8 +357,31 @@ int main()
             printf("\n\nQue pena! Seu barco colidiu com uma embarcacao e afundou!\n\n");
             return 0;
         }
+        if(rodada == 1)
+        {
+            linAtual--;
+        }
+        if(rodada == 2)
+        {
+            linAtual++;
+        }
+        if(rodada == 3)
+        {
+            colAtual--;
+        }
+        if(rodada == 4)
+        {
+            colAtual++;
+        }
+
+        if(mapa[linAtual][colAtual] == '!')
+        {
+            printf("\n\nQue pena! Seu barco foi atingido por um tiro e afundou!\n\n");
+            return 0;
+        }
     }
 
 	freeImagemGame(mapa);
 	return 0;
 }
+
