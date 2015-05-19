@@ -19,6 +19,7 @@ ImagemGame 		* leia_mapa(char *nomeArquivo);
 void 			freeImagemGame(ImagemGame *mapa);
 void 			escreva_mapa_tela(ImagemGame *mapa);
 int             posiciona_barco(ImagemGame *mapa, int linAtual, int colAtual);
+int             rema_barco(imagemGame *mapa, int linAtual, int colAtual);
 
 /*-------------------------------------------------------------*/
 /*  mallocSafe
