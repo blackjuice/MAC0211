@@ -502,8 +502,6 @@ int identifica_alvo_atingido (char **mapa, int linhaTiro, int colunaTiro, int li
         if(mapa[linhaTiro][colunaTiro] == 'C')
         {
             printf("\nUm CRUZADOR foi totalmente destruido!");
-            //afunda_cruzador (mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //4
-            contador = 4;
             afunda_cruzador (mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //4
         }
 
@@ -517,7 +515,7 @@ int identifica_alvo_atingido (char **mapa, int linhaTiro, int colunaTiro, int li
 
         if(mapa[linhaTiro][colunaTiro] == 'H')
         {
-            printf("\nUm tiro atingiu um hidro-aviao! O mesmo foi totalmente destruido!");
+            printf("\nUm tiro atingiu um HIDRO-AVIAO! O mesmo foi totalmente destruido!");
             //afunda_destroyer(mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //3
             contador = 3;
             afunda_hidro_aviao(mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //3
@@ -610,6 +608,7 @@ void afunda_destroyer(char **mapa, int linha, int coluna, int rowMax, int column
 void afunda_cruzador(char **mapa, int linha, int coluna, int rowMax, int columnMax, int *contador)
 {
     mapa[linha][coluna] = '*';
+    //printf("contador = %d\n", (*contador) );
 
     while( (*contador) < 4 )
     {
