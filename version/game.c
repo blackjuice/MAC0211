@@ -422,7 +422,6 @@ void afunda_destroyer(char **mapa, int linha, int coluna, int rowMax, int column
             if(mapa[linha - 1][coluna - 1] == 'D')
             {
                 contador++;
-                mapa[linha - 1][coluna - 1] = '*';
                 afunda_destroyer(mapa, linha - 1, coluna - 1, rowMax, columnMax, contador);
             }
         }
@@ -432,7 +431,6 @@ void afunda_destroyer(char **mapa, int linha, int coluna, int rowMax, int column
             if(mapa[linha][coluna - 1] == 'D')
             {
                 contador++;
-                mapa[linha][coluna - 1] = '*';
                 afunda_destroyer(mapa, linha, coluna - 1, rowMax, columnMax, contador);
             }
         }
@@ -442,7 +440,6 @@ void afunda_destroyer(char **mapa, int linha, int coluna, int rowMax, int column
             if(mapa[linha + 1][coluna - 1] == 'D')
             {
                 contador++;
-                mapa[linha + 1][coluna - 1] = '*';
                 afunda_destroyer(mapa, linha + 1,coluna - 1, rowMax, columnMax, contador);
             }
         }
@@ -452,7 +449,6 @@ void afunda_destroyer(char **mapa, int linha, int coluna, int rowMax, int column
             if(mapa[linha - 1][coluna] == 'D')
             {
                 contador++;
-                mapa[linha - 1][coluna] = '*';
                 afunda_destroyer(mapa, linha - 1, coluna, rowMax, columnMax, contador);
             }
         }
@@ -462,7 +458,6 @@ void afunda_destroyer(char **mapa, int linha, int coluna, int rowMax, int column
             if(mapa[linha + 1][coluna] == 'D')
             {
                 contador++;
-                mapa[linha + 1][coluna] = '*';
                 afunda_destroyer(mapa,linha + 1, coluna, rowMax, columnMax, contador);
             }
         }
@@ -472,7 +467,6 @@ void afunda_destroyer(char **mapa, int linha, int coluna, int rowMax, int column
             if(mapa[linha - 1][coluna + 1] == 'D')
             {
                 contador++;
-                mapa[linha - 1][coluna + 1] = '*';
                 afunda_destroyer(mapa, linha - 1, coluna + 1, rowMax, columnMax, contador);
             }
         }
@@ -482,7 +476,6 @@ void afunda_destroyer(char **mapa, int linha, int coluna, int rowMax, int column
             if(mapa[linha][coluna + 1] == 'D')
             {
                 contador++;
-                mapa[linha][coluna + 1] = '*';
                 afunda_destroyer(mapa, linha, coluna + 1, rowMax, columnMax, contador);
             }
         }
@@ -492,7 +485,6 @@ void afunda_destroyer(char **mapa, int linha, int coluna, int rowMax, int column
             if(mapa[linha + 1][coluna + 1] == 'D')
             {
                 contador++;
-                mapa[linha + 1][coluna + 1] = '*';
                 afunda_destroyer(mapa, linha + 1, coluna + 1, rowMax, columnMax, contador);
             }
         }
@@ -510,7 +502,6 @@ void afunda_cruzador(char **mapa, int linha, int coluna, int rowMax, int columnM
             if(mapa[linha-1][coluna-1] == 'C')
             {
                 contador++;
-                mapa[linha-1][coluna-1] = '*';
                 afunda_cruzador(mapa,linha-1,coluna-1,rowMax,columnMax,contador);
             }
         }
@@ -520,7 +511,6 @@ void afunda_cruzador(char **mapa, int linha, int coluna, int rowMax, int columnM
             if(mapa[linha][coluna-1] == 'C')
             {
                 contador++;
-                mapa[linha][coluna-1] = '*';
                 afunda_cruzador(mapa,linha,coluna-1,rowMax,columnMax,contador);
             }
         }
@@ -530,7 +520,6 @@ void afunda_cruzador(char **mapa, int linha, int coluna, int rowMax, int columnM
             if(mapa[linha+1][coluna-1] == 'C')
             {
                 contador++;
-                mapa[linha+1][coluna-1] = '*';
                 afunda_cruzador(mapa,linha+1,coluna-1,rowMax,columnMax,contador);
             }
         }
@@ -540,7 +529,6 @@ void afunda_cruzador(char **mapa, int linha, int coluna, int rowMax, int columnM
             if(mapa[linha-1][coluna] == 'C')
             {
                 contador++;
-                mapa[linha-1][coluna] = '*';
                 afunda_cruzador(mapa,linha-1,coluna,rowMax,columnMax,contador);
             }
         }
@@ -550,7 +538,6 @@ void afunda_cruzador(char **mapa, int linha, int coluna, int rowMax, int columnM
             if(mapa[linha+1][coluna] == 'C')
             {
                 contador++;
-                mapa[linha+1][coluna] = '*';
                 afunda_cruzador(mapa,linha+1,coluna,rowMax,columnMax,contador);
             }
         }
@@ -560,7 +547,6 @@ void afunda_cruzador(char **mapa, int linha, int coluna, int rowMax, int columnM
             if(mapa[linha-1][coluna+1] == 'C')
             {
                 contador++;
-                mapa[linha-1][coluna+1] = '*';
                 afunda_cruzador(mapa,linha-1,coluna+1,rowMax,columnMax,contador);
             }
         }
@@ -570,7 +556,6 @@ void afunda_cruzador(char **mapa, int linha, int coluna, int rowMax, int columnM
             if(mapa[linha][coluna+1] == 'C')
             {
                 contador++;
-                mapa[linha][coluna+1] = '*';
                 afunda_cruzador(mapa,linha,coluna+1,rowMax,columnMax,contador);
             }
         }
@@ -580,7 +565,6 @@ void afunda_cruzador(char **mapa, int linha, int coluna, int rowMax, int columnM
             if(mapa[linha+1][coluna+1] == 'C')
             {
                 contador++;
-                mapa[linha+1][coluna+1] = '*';
                 afunda_cruzador(mapa,linha+1,coluna+1,rowMax,columnMax,contador);
             }
         }
@@ -598,7 +582,6 @@ void afunda_porta_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha-1][coluna-1] == 'P')
             {
                 contador++;
-                mapa[linha-1][coluna-1] = '*';
                 afunda_porta_aviao(mapa,linha-1,coluna-1,rowMax,columnMax,contador);
             }
         }
@@ -608,7 +591,6 @@ void afunda_porta_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha][coluna-1] == 'P')
             {
                 contador++;
-                mapa[linha][coluna-1] = '*';
                 afunda_porta_aviao(mapa,linha,coluna-1,rowMax,columnMax,contador);
             }
         }
@@ -618,7 +600,6 @@ void afunda_porta_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha+1][coluna-1] == 'P')
             {
                 contador++;
-                mapa[linha+1][coluna-1] = '*';
                 afunda_porta_aviao(mapa,linha+1,coluna-1,rowMax,columnMax,contador);
             }
         }
@@ -628,7 +609,6 @@ void afunda_porta_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha-1][coluna] == 'P')
             {
                 contador++;
-                mapa[linha-1][coluna] = '*';
                 afunda_porta_aviao(mapa,linha-1,coluna,rowMax,columnMax,contador);
             }
         }
@@ -638,7 +618,6 @@ void afunda_porta_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha+1][coluna] == 'P')
             {
                 contador++;
-                mapa[linha+1][coluna] = '*';
                 afunda_porta_aviao(mapa,linha+1,coluna,rowMax,columnMax,contador);
             }
         }
@@ -648,7 +627,6 @@ void afunda_porta_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha-1][coluna+1] == 'P')
             {
                 contador++;
-                mapa[linha-1][coluna+1] = '*';
                 afunda_porta_aviao(mapa,linha-1,coluna+1,rowMax,columnMax,contador);
             }
         }
@@ -658,7 +636,6 @@ void afunda_porta_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha][coluna+1] == 'P')
             {
                 contador++;
-                mapa[linha][coluna+1] = '*';
                 afunda_porta_aviao(mapa,linha,coluna+1,rowMax,columnMax,contador);
             }
         }
@@ -668,7 +645,6 @@ void afunda_porta_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha+1][coluna+1] == 'P')
             {
                 contador++;
-                mapa[linha+1][coluna+1] = '*';
                 afunda_porta_aviao(mapa,linha+1,coluna+1,rowMax,columnMax,contador);
             }
         }
@@ -686,7 +662,6 @@ void afunda_hidro_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha-1][coluna-1] == 'H')
             {
                 contador++;
-                mapa[linha-1][coluna-1] = '*';
                 afunda_hidro_aviao(mapa,linha-1,coluna-1,rowMax,columnMax,contador);
             }
         }
@@ -696,7 +671,6 @@ void afunda_hidro_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha][coluna-1] == 'H')
             {
                 contador++;
-                mapa[linha][coluna-1] = '*';
                 afunda_hidro_aviao(mapa,linha,coluna-1,rowMax,columnMax,contador);
             }
         }
@@ -706,7 +680,6 @@ void afunda_hidro_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha+1][coluna-1] == 'H')
             {
                 contador++;
-                mapa[linha+1][coluna-1] = '*';
                 afunda_hidro_aviao(mapa,linha+1,coluna-1,rowMax,columnMax,contador);
             }
         }
@@ -716,7 +689,6 @@ void afunda_hidro_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha-1][coluna] == 'H')
             {
                 contador++;
-                mapa[linha-1][coluna] = '*';
                 afunda_hidro_aviao(mapa,linha-1,coluna,rowMax,columnMax,contador);
             }
         }
@@ -726,7 +698,6 @@ void afunda_hidro_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha+1][coluna] == 'H')
             {
                 contador++;
-                mapa[linha+1][coluna] = '*';
                 afunda_hidro_aviao(mapa,linha+1,coluna,rowMax,columnMax,contador);
             }
         }
@@ -736,7 +707,6 @@ void afunda_hidro_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha-1][coluna+1] == 'H')
             {
                 contador++;
-                mapa[linha-1][coluna+1] = '*';
                 afunda_hidro_aviao(mapa,linha-1,coluna+1,rowMax,columnMax,contador);
             }
         }
@@ -746,7 +716,6 @@ void afunda_hidro_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha][coluna+1] == 'H')
             {
                 contador++;
-                mapa[linha][coluna+1] = '*';
                 afunda_hidro_aviao(mapa,linha,coluna+1,rowMax,columnMax,contador);
             }
         }
@@ -756,7 +725,6 @@ void afunda_hidro_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
             if(mapa[linha+1][coluna+1] == 'H')
             {
                 contador++;
-                mapa[linha+1][coluna+1] = '*';
                 afunda_hidro_aviao(mapa,linha+1,coluna+1,rowMax,columnMax,contador);
             }
         }
