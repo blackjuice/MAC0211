@@ -59,8 +59,8 @@ int main()
     int         direcao = 0;
     int         situation = GAME_OVER_SUCCESS;
     char        **mapa;
-    char        saida_arquivo[MAX_NOME];
-    char        input[MAX_NOME];
+    //char        saida_arquivo[MAX_NOME];
+    //char        input[MAX_NOME];
 
     srand       ((unsigned int) time(NULL));
 
@@ -68,16 +68,18 @@ int main()
             "  PROJETO BOMBARDEIO NAVAL \n"
             " --------------------------\n\n\n");
 
+/*
     printf(" Digite o caminho do arquivo mapa a ser utilizado: ");
     scanf("%s", input);
     printf(" Digite o nome do arquivo que conterá toda a saída do programa: ");
     scanf("%s", saida_arquivo);
-
+*/
     //char input[35] = "test.txt";
     //char input[35] = "test1.txt";
     //char input[35] = "destr.txt";
     //char input[35] = "cruz.txt";
-    //char saida_arquivo[20] = "result.txt";
+    char input[35] = "mapa2.txt";
+    char saida_arquivo[20] = "debug001_porta.txt";
 
 	/* 2. carregue o mapa do arquivo*/
 	mapa = leia_mapa   (input, &linha, &coluna);
@@ -445,7 +447,9 @@ int dispara_tiros (char **mapa, int linha, int coluna, char *nome)
     int    linhaTiro, colunaTiro;
 
     for (tiros = 0; tiros < 3; tiros++) {
-        coordenadas_tiro(&linhaTiro, &colunaTiro, linha, coluna);
+        //coordenadas_tiro(&linhaTiro, &colunaTiro, linha, coluna);
+        linhaTiro   = 5;
+        colunaTiro  = 0;
         printf("\nUm tiro atingiu a posição [%d][%d]!", linhaTiro, colunaTiro);
         escreva_mapa_arquivo_tiro (nome, linhaTiro, colunaTiro);
 
@@ -502,23 +506,21 @@ int identifica_alvo_atingido (char **mapa, int linhaTiro, int colunaTiro, int li
         if(mapa[linhaTiro][colunaTiro] == 'C')
         {
             printf("\nUm CRUZADOR foi totalmente destruido!");
-            afunda_cruzador (mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //4
+            afunda_cruzador (mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador);
         }
 
         if(mapa[linhaTiro][colunaTiro] == 'P')
         {
             printf("\nUm PORTA-AVIAO foi totalmente destruido!");
-            //afunda_porta_aviao (mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //5
-            contador = 5;
-            afunda_porta_aviao (mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //5
+            //contador = 5;
+            afunda_porta_aviao (mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador);
         }
 
         if(mapa[linhaTiro][colunaTiro] == 'H')
         {
             printf("\nUm tiro atingiu um HIDRO-AVIAO! O mesmo foi totalmente destruido!");
-            //afunda_destroyer(mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //3
-            contador = 3;
-            afunda_hidro_aviao(mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //3
+            //contador = 3;
+            afunda_hidro_aviao(mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador);
         }
     }
     return SAFE_MOVE;
@@ -608,7 +610,6 @@ void afunda_destroyer(char **mapa, int linha, int coluna, int rowMax, int column
 void afunda_cruzador(char **mapa, int linha, int coluna, int rowMax, int columnMax, int *contador)
 {
     mapa[linha][coluna] = '*';
-    //printf("contador = %d\n", (*contador) );
 
     while( (*contador) < 4 )
     {
@@ -687,8 +688,10 @@ void afunda_cruzador(char **mapa, int linha, int coluna, int rowMax, int columnM
 }
 void afunda_porta_aviao(char **mapa, int linha, int coluna, int rowMax, int columnMax, int *contador)
 {
+    printf("PORTA (%d)(%d) contador = %d\n", linha, coluna, (*contador) );
     mapa[linha][coluna] = '*';
 
+    if ( (*contador) == 5 ) printf("we got in contador = 5\n");
     while( (*contador) < 5 )
     {
         if(linha != 0 && coluna != 0)
@@ -767,6 +770,8 @@ void afunda_porta_aviao(char **mapa, int linha, int coluna, int rowMax, int colu
 
 void afunda_hidro_aviao(char **mapa, int linha, int coluna, int rowMax, int columnMax, int *contador)
 {
+    printf("HIDRO (%d)(%d) contador = %d\n", linha, coluna, (*contador) );
+
     mapa[linha][coluna] = '*';
 
     while( (*contador) < 3 )
