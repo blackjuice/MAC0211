@@ -502,19 +502,25 @@ int identifica_alvo_atingido (char **mapa, int linhaTiro, int colunaTiro, int li
         if(mapa[linhaTiro][colunaTiro] == 'C')
         {
             printf("\nUm CRUZADOR foi totalmente destruido!");
-            afunda_cruzador (mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, 4);
+            //afunda_cruzador (mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //4
+            contador = 4;
+            afunda_cruzador (mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //4
         }
 
         if(mapa[linhaTiro][colunaTiro] == 'P')
         {
             printf("\nUm PORTA-AVIAO foi totalmente destruido!");
-            afunda_porta_aviao (mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, 5);
+            //afunda_porta_aviao (mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //5
+            contador = 5;
+            afunda_porta_aviao (mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //5
         }
 
         if(mapa[linhaTiro][colunaTiro] == 'H')
         {
             printf("\nUm tiro atingiu um hidro-aviao! O mesmo foi totalmente destruido!");
-            afunda_hidro_aviao(mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, 3);
+            //afunda_destroyer(mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //3
+            contador = 3;
+            afunda_hidro_aviao(mapa, linhaTiro, colunaTiro, linha - 1, coluna - 1, &contador); //3
         }
     }
     return SAFE_MOVE;
