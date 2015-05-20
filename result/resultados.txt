@@ -1,0 +1,20 @@
+Um tiro atingiu a posição [2][1]!
+Sorte que so tinha agua no local!
+
+Um tiro atingiu a posição [1][4]!
+Um tiro atingiu uma das posicoes passadas por seu barco! Sorte que seu barco nao estava la nessa rodada!
+
+Um tiro atingiu a posição [3][3]!
+   0  1  2  3  4 
+0  -  -  -  -  T 
+1  -  -  -  -  + 
+2  -  =  -  =  B 
+3  -  -  -  -  - 
+4  -  -  =  -  - 
+
+   0  1  2  3  4 
+0  -  -  -  -  T 
+1  -  -  -  -  + 
+2  -  =  -  =  B 
+3  -  -  -  -  - 
+4  -  -  =  -  - 
