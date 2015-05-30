@@ -2,7 +2,7 @@
 ; nome: LUCAS SUNG JUN HONG
 ; nUSP: 812 432 9
 ; 
-; EP1 - Lab Prog (MAC 0211)
+; EP1 - LAB PROG I (MAC 0211)
 ; 
 ; Compilacao:
 ;   Para rodar em uma maquina 64bit:
