@@ -1,0 +1,39 @@
+/* XPM */
+static char * title_xpm[] = {
+"70 29 3 1",
+".  c blue",
+"o  c red",
+"X  c black",
+
+
+
+
+"......................................................................",
+"...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...",
+"...XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX...",
+"...XXooooooooooooooooooooooooooXX....XXooooooooooooooooooooooooooXX...",
+"...XXooooooooooooooooooooooooooXX....XXooooooooooooooooooooooooooXX...",
+"...XXooooooooooooooooooooooooooXX....XXooooooooooooooooooooooooooXX...",
+"...XXooooooooooooooooooooooooooXX....XXooooooooooooooooooooooooooXX...",
+"...XXooooooooooooooooooooooooooXX....XXooooooooooooooooooooooooooXX...",
+"...XXXXXXXXXXXXXXXXXXXXXXooooooXX....XXXXXXXXXXXXXXXXXXXXXXooooooXX...",
+"...XXXXXXXXXXXXXXXXXXXXXXooooooXX....XXXXXXXXXXXXXXXXXXXXXXooooooXX...",
+"......................XXooooooXX........................XXooooooXX....",
+".....................XXooooooXX........................XXooooooXX.....",
+".....................XXooooooXX........................XXooooooXX.....",
+"....................XXooooooXX........................XXooooooXX......",
+"...................XXooooooXX........................XXooooooXX.......",
+"...................XXooooooXX........................XXooooooXX.......",
+".................XXooooooXX........................XXooooooXX.........",
+".................XXooooooXX........................XXooooooXX.........",
+"................XXooooooXX........................XXooooooXX..........",
+"...............XXooooooXX........................XXooooooXX...........",
+"...............XXooooooXX........................XXooooooXX...........",
+"..............XXooooooXX........................XXooooooXX............",
+".............XXooooooXX........................XXooooooXX.............",
+".............XXooooooXX........................XXooooooXX.............",
+"............XXooooooXX........................XXooooooXX..............",
+"............XXooooooXX........................XXooooooXX..............",
+"............XXXXXXXXXX........................XXXXXXXXXX..............",
+"............XXXXXXXXXX........................XXXXXXXXXX..............",
+"......................................................................"};
