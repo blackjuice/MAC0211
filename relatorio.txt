@@ -1,0 +1,40 @@
+MANUAL DO USUARIO
+=================
+
+    O projeto Bombardeio Naval conta com um barco controlado pelo usuário e
+posicionado inicialmente na primeira linha. A cada movimento realizado, três
+tiros serão escolhidos aleatoriamente. Uma embarcação atingigida 
+leva à total destruição da mesma. Caso o barco seja atingido, o jogo
+termina com a derrota do usuário. Há uma outra forma do usuário ser 
+derrotado: através de uma colisão com uma outra embarcação.
+
+    Para auxiliar o usuário a escapar das embarcações, cada tiro deixará uma 
+indicação no mapa do que atingiu.
+
+    A vitória do usuário acontecerá quando o barco atingir a última linha
+do mapa.
+
+--------------------------------------------------------------------------------
+
+COMO JOGAR
+**********
+
+1 - Usuário entra com o nome do mapa em formato .dat ou .txt, seguido de um nome
+para um arquivo de saída.
+
+2 - Em seguida deve ser indicado a posicao da coluna para o posicionamento do barco.
+
+3 - Assim, o usuário deve escolher 4 opções:
+
+     _______________________ 
+    |                       |
+    |   Direcao do barco:   |
+    |_______________________|
+    |                       |
+    |    (c) para cima      |
+    |    (b) para baixo     |
+    |    (d) para direita   |
+    |    (e) para esquerda  |
+    |_______________________|
+
+4 - repetir o passo (3) até que o usuário perca/ganha o jogo.
