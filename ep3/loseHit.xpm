@@ -1,0 +1,28 @@
+/* XPM */
+static char * loseHit_xpm[] = {
+"18 34 2 1",
+".	c blue",
+"X	c red"
+
+
+
+
+"XX......XXXXXXXX..XXXXXXX..XXXXXXX",
+"XX......XXXXXXXX..XXXXXXX..XXXXXXX",
+"XX......XX....XX..XX.......XX.....",
+"XX......XX....XX..XX.......XX.....",
+"XX......XX....XX..XX.......XX.....",
+"XX......XX....XX..XXXXXXX..XXXXXXX",
+"XX......XX....XX..XXXXXXX..XXXXXXX",
+"XX......XX....XX.......XX..XX.....",
+"XX......XX....XX.......XX..XX.....",
+"XX......XX....XX.......XX..XX.....",
+"XXXXXX..XXXXXXXX..XXXXXXX..XXXXXXX",
+"XXXXXX..XXXXXXXX..XXXXXXX..XXXXXXX",
+"..................................",
+"..................................",
+".............X.X.X.XXX............",
+".............X.X.X..X.............",
+".............XXX.X..X.............",
+".............X.X.X..X.............",
+".............X.X.X..X.............",
