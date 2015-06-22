@@ -1,6 +1,6 @@
 /* XPM */
-static char * waterHit_xpm[] = {
-"32 32 2 1",
+static char * loseShock_xpm[] = {
+"18 34 2 1",
 ".	c blue",
 "X	c red"
 
@@ -21,6 +21,8 @@ static char * waterHit_xpm[] = {
 "XXXXXX..XXXXXXXX..XXXXXXX..XXXXXXX",
 "..................................",
 "..................................",
-"XX.XXX.XX..X.XX..X.XXX.X.XXX.XX..X",
-"X..X.X.X.X.X.X.X.X..X..X.X.X.X.X.X",
-"XX.XXX.X..XX.XX..X..X..X.XXX.X..XX",
+"........XXX.X.X.XXX.XXX.X..X......",
+"........X...X.X.X.X.X...X.X.......",
+"........XXX.XXX.X.X.X...XX........",
+"..........X.X.X.X.X.X...X.X.......",
+"........XXX.X.X.XXX.XXX.X..X......",
