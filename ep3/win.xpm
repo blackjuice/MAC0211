@@ -1,0 +1,32 @@
+/* XPM */
+static char * win_xpm[] = {
+"18 34 2 1",
+".	c blue",
+"X	c yellow"
+
+
+
+
+"XX...........XX..XX...XX.......XX",
+"XX...........XX..XX..XXXX......XX",
+"XX...........XX..XX..XX.XX.....XX",
+"XX...........XX..XX..XX.XX.....XX",
+"XX...........XX..XX..XX.XX.....XX",
+"XX...........XX..XX..XX..XX....XX",
+"XX...........XX..XX..XX..XX....XX",
+"XX...........XX..XX..XX..XX....XX",
+"XX...........XX..XX..XX...XX...XX",
+"XX...........XX..XX..XX...XX...XX",
+"XX....XXX....XX..XX..XX...XX...XX",
+"XX...XX.XX...XX..XX..XX....XX..XX",
+"XX...XX.XX...XX..XX..XX....XX..XX",
+"XX...XX.XX...XX..XX..XX....XX..XX",
+"XX...XX.XX...XX..XX..XX.....XX.XX",
+".XX.XX...XX.XX...XX..XX.....XX.XX",
+".XX.XX...XX.XX...XX..XX......XXXX",
+"..XXX.....XXX....XX..XX.......XX.",
+
+
+
+
+
