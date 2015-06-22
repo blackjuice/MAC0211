@@ -1,0 +1,26 @@
+/* XPM */
+static char * waterHit_xpm[] = {
+"32 32 2 1",
+".	c blue",
+"X	c red"
+
+
+
+
+"XX......XXXXXXXX..XXXXXXX..XXXXXXX",
+"XX......XXXXXXXX..XXXXXXX..XXXXXXX",
+"XX......XX....XX..XX.......XX.....",
+"XX......XX....XX..XX.......XX.....",
+"XX......XX....XX..XX.......XX.....",
+"XX......XX....XX..XXXXXXX..XXXXXXX",
+"XX......XX....XX..XXXXXXX..XXXXXXX",
+"XX......XX....XX.......XX..XX.....",
+"XX......XX....XX.......XX..XX.....",
+"XX......XX....XX.......XX..XX.....",
+"XXXXXX..XXXXXXXX..XXXXXXX..XXXXXXX",
+"XXXXXX..XXXXXXXX..XXXXXXX..XXXXXXX",
+"..................................",
+"..................................",
+"XX.XXX.XX..X.XX..X.XXX.X.XXX.XX..X",
+"X..X.X.X.X.X.X.X.X..X..X.X.X.X.X.X",
+"XX.XXX.X..XX.XX..X..X..X.XXX.X..XX",
