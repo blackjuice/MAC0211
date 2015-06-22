@@ -1,0 +1,42 @@
+/* XPM */
+static char * boat001_xpm[] = {
+"32 32 3 1",
+".	c blue",
+"X	c black",
+"o	c red",
+
+
+
+
+"................................",
+"................................",
+"...............XX...............",
+"...............XX...............",
+"...............XX...............",
+"...............XX...............",
+".............XXXXXX.............",
+"..........XooooXXooooX..........",
+"........XooooooXXooooooX........",
+".......XoooooooXXoooooooX.......",
+"......XooooooooXXooooooooX......",
+".....XoooooooooXXoooooooooX.....",
+"....XooooooooooXXooooooooooX....",
+"....XooooooooooXXooooooooooX....",
+"....XooooooooooXXooooooooooX....",
+"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+"....XooooooooooXXooooooooooX....",
+"....XooooooooooXXooooooooooX....",
+"....XooooooooooXXooooooooooX....",
+".....XoooooooooXXoooooooooX.....",
+"......XooooooooXXooooooooX......",
+".......XoooooooXXoooooooX.......",
+"........XooooooXXooooooX........",
+"..........XooooXXooooX..........",
+".............XXXXXX.............",
+"...............XX...............",
+"...............XX...............",
+"...............XX...............",
+"...............XX...............",
+"................................",
+"................................"};
