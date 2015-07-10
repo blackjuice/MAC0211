@@ -1,0 +1,27 @@
+Assembly execution steps
+========================
+
+ compiling .asm
+ ==============
+ # nasm -f elf hello.asm
+
+ creating executable file
+ ========================
+ # ld hello.o -o hello
+
+ execution
+ =========
+ # ./hello
+
+ one line
+ ========
+ nasm -f elf hello.asm && ld hello.o -o hello && ./hello
+
+
+ creating .s from .c
+ ===================
+ # gcc -S -m32 -masm=intel -fverbose -asm file.c
+
+
+
+
